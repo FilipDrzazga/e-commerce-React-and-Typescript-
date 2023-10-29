@@ -7,18 +7,21 @@ const Section = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
+  background-color: ${(props) => props.theme.colors.lightBlue};
 `;
 const Title = styled.h1`
   width: 100%;
-  height: 100%;
-  font-stretch: expanded;
-  //   width: 100%;
-  font-size: 8rem;
-  //   font-family: "Oswald";
-  //   font-weight: 700;
-  //   letter-spacing: -5rem;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  height: auto;
+  text-align: center;
+  font-size: ${(props) => props.theme.fontsSize.xxl};
+`;
+const SubTitle = styled.h2`
+  width: 100%;
+  height: auto;
+  letter-spacing: 1.5rem;
+  text-align: center;
+  font-size: ${(props) => props.theme.fontsSize.l};
+  color: ${(props) => props.theme.colors.purple};
 `;
 
-export { Section, Title };
+export { Section, Title, SubTitle };

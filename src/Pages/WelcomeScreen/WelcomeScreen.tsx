@@ -4,7 +4,8 @@ import * as S from "../WelcomeScreen/WelcomeScreen.styled";
 const WelcomeScreen: React.FC = () => {
   return (
     <S.Section>
-      <S.Title>Wine</S.Title>
+      <S.Title>wines</S.Title>
+      <S.SubTitle>STORE</S.SubTitle>
     </S.Section>
   );
 };
