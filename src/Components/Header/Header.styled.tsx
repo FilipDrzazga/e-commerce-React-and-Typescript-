@@ -13,6 +13,7 @@ const Nav = styled.nav`
 `;
 const Title = styled.h1`
   letter-spacing: 0.2rem;
+  cursor: pointer;
   span {
     color: ${({ theme }) => theme.colors.purple};
   }
@@ -26,12 +27,14 @@ const MenuBtn = styled.button`
   gap: 0.3rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 const ShopBtn = styled.button`
   width: auto;
   height: 3rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 
 export { Header, Nav, Title, MenuBtn, ShopBtn };

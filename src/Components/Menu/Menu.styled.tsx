@@ -23,6 +23,7 @@ const Item = styled.li`
   font-size: ${({ theme }) => theme.fontsSize.xl};
   font-weight: 700;
   letter-spacing: 3rem;
+  cursor: pointer;
 `;
 const ImgContainer = styled.article`
   width: 50%;
