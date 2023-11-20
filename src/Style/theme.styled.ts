@@ -10,9 +10,12 @@ declare module "styled-components" {
       l: string;
       xl: string;
       xxl: string;
+      special: string;
     };
     colors: {
       black: string;
+      lightBlack: string;
+      gray: string;
       purple: string;
       lightBlue: string;
     };
@@ -23,13 +26,16 @@ const theme: DefaultTheme = {
   padding: ["1rem", "2rem"],
   fontsSize: {
     s: "0.5rem",
-    m: "0.8rem",
+    m: "1rem",
     l: "1.5rem",
     xl: "5rem",
-    xxl: "6rem",
+    xxl: "8rem",
+    special: "18rem",
   },
   colors: {
     black: "#292929",
+    lightBlack: "#29292909",
+    gray: "#AEB7C8",
     purple: "#D197FF",
     lightBlue: "#E3F9FF",
   },

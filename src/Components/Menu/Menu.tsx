@@ -1,9 +1,9 @@
-import React from "react";
+import { type FC } from "react";
 import redWineImg from "../../assets/images/red-wine.jpg";
 
 import * as S from "./Menu.styled";
 
-const Menu: React.FC = () => {
+const Menu: FC = () => {
   return (
     <S.Section>
       <S.Nav>

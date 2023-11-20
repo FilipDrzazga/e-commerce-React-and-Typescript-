@@ -1,6 +1,6 @@
-import React from "react";
+import { type FC } from "react";
 
-const MenuIcon: React.FC = () => {
+const MenuIcon: FC = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="29" height="17" viewBox="0 0 29 17" fill="none">
       <path d="M1 1H27.8788" stroke="#292929" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

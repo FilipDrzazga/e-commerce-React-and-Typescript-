@@ -1,4 +1,4 @@
-import React, { type ReactElement, createContext } from "react";
+import { type FC, type ReactElement, createContext } from "react";
 
 type Product = {
   name: string;
@@ -18,7 +18,7 @@ type WebContextProviderPropsType = {
 
 const WebCtx = createContext<WebContextValueType | null>(null);
 
-const WebContextProvider: React.FC<WebContextProviderPropsType> = ({ children }) => {
+const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
   const ctx: WebContextValueType = {
     addProduct() {},
     removeProduct() {},

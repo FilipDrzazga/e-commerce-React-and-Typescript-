@@ -8,6 +8,7 @@ const Section = styled.section`
 const Nav = styled.nav`
   width: 50%;
   height: 95%;
+  padding-left: 10rem;
 `;
 const List = styled.ul`
   width: 100%;
@@ -15,7 +16,6 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 2rem;
   list-style-type: none;
 `;
@@ -28,9 +28,12 @@ const Item = styled.li`
 const ImgContainer = styled.article`
   width: 50%;
   height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
-    weight: 100%;
-    height: 100%;
+    weight: 70%;
+    height: 70%;
     object-fit: contain;
   }
 `;

@@ -1,13 +1,13 @@
-import React from "react";
-import Header from "../../Components/Header/Header";
+import { type FC } from "react";
+import Navigation from "../../Components/Navigation/Navigation";
 import Menu from "../../Components/Menu/Menu";
 
 import * as S from "./HomeScreen.styled";
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: FC = () => {
   return (
     <S.Container>
-      <Header />
+      <Navigation />
       <Menu />
     </S.Container>
   );

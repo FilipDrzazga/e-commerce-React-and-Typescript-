@@ -1,9 +1,9 @@
-import React from "react";
+import { type FC } from "react";
 import { MenuIcon, ShopBagIcon } from "../../assets/icons";
 
-import * as S from "./Header.styled";
+import * as S from "./Navigation.styled";
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   return (
     <S.Header>
       <S.Nav>
