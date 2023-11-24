@@ -1,7 +1,7 @@
 import React from "react";
 import WelcomeScreen from "./Pages/WelcomeScreen/WelcomeScreen";
 import HomeScreen from "./Pages/HomeScreen/HomeScreen";
-import WineList from "./Pages/WineList/WineList";
+import WineList from "./Pages/Wines/Wines";
 
 import GlobalStyle from "./Style/GlobalStyle.styled";
 import { ThemeProvider } from "styled-components";
