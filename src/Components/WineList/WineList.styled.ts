@@ -49,14 +49,14 @@ const ItemPrice = styled.p`
 const AddBtn = styled.button`
   position: absolute;
   bottom: calc(20% + 2rem);
-  left: 2rem;
+  left: 3rem;
   background-color: transparent;
   border: none;
 `;
 const RemoveBtn = styled.button`
   position: absolute;
   bottom: calc(20% + 2rem);
-  right: 2rem;
+  right: 3rem;
   background-color: transparent;
   border: none;
 `;

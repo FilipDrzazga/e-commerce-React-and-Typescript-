@@ -12,10 +12,10 @@ const WineList: FC = () => {
             <S.ItemImg src={smallRedWine} alt="small wine" />
           </S.ItemImgContainer>
           <S.RemoveBtn>
-            <AddBtnIcon />
+            <RemoveBtnIcon />
           </S.RemoveBtn>
           <S.AddBtn>
-            <RemoveBtnIcon />
+            <AddBtnIcon />
           </S.AddBtn>
           <S.ItemDescriptionContainer>
             <S.ItemName>Angelicall Rosé 2014</S.ItemName>
