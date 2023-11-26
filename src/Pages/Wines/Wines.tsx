@@ -15,7 +15,6 @@ const Wines: FC = () => {
   useEffect(() => {
     WebCtx.fetchWinesByType(winesType);
   }, [winesType]);
-  console.log(winesType);
 
   return (
     <S.Container>

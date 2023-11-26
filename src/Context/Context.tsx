@@ -1,4 +1,5 @@
 import { type FC, type ReactElement, useState, createContext, useContext } from "react";
+import { splitIntoChunks, filterPngImages } from "../helpers";
 
 type FetchedDataShape = {
   winery: string;
@@ -20,7 +21,7 @@ type Product = {
 };
 
 type WebContextValueType = {
-  fetchedData: FetchedDataShape[] | null;
+  fetchedData: Array<FetchedDataShape[]> | null;
   fetchWinesByType: (winesType?: string) => Promise<unknown>;
   addProduct: (product: Product) => void;
   removeProduct: (productId: number) => void;
@@ -41,7 +42,7 @@ export const useWebContext = () => {
 };
 
 const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
-  const [fetchData, setFetchData] = useState<FetchedDataShape[] | null>(null);
+  const [fetchData, setFetchData] = useState<FetchedDataShape[][] | null>(null);
 
   const ctx: WebContextValueType = {
     fetchedData: fetchData,
@@ -52,10 +53,11 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
           throw new Error("Fetch wines data went wrong");
         }
         const data = await response.json();
-        const getPngWine = data.filter((wine: FetchedDataShape) => wine.image.includes(".png"));
-        console.log(getPngWine);
+        const getPngWine: FetchedDataShape[] = filterPngImages(data);
+        const winesChunks = splitIntoChunks(getPngWine, 20);
+        console.log(winesChunks);
 
-        return setFetchData(getPngWine);
+        return setFetchData(winesChunks);
       } catch (error) {
         console.log(error);
       }
