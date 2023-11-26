@@ -21,7 +21,8 @@ type Product = {
 };
 
 type WebContextValueType = {
-  fetchedData: Array<FetchedDataShape[]> | null;
+  data: Array<FetchedDataShape[]>;
+  displayDataPage: () => void;
   fetchWinesByType: (winesType?: string) => Promise<unknown>;
   addProduct: (product: Product) => void;
   removeProduct: (productId: number) => void;
@@ -42,10 +43,12 @@ export const useWebContext = () => {
 };
 
 const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
-  const [fetchData, setFetchData] = useState<FetchedDataShape[][] | null>(null);
+  const [fetchData, setFetchData] = useState<FetchedDataShape[][]>([]);
+  const [data, setData] = useState<FetchedDataShape[][]>([]);
+  const [page, setPage] = useState(0);
 
   const ctx: WebContextValueType = {
-    fetchedData: fetchData,
+    data: data,
     async fetchWinesByType(winesType) {
       try {
         const response = await fetch(`https://api.sampleapis.com/wines/${winesType}`);
@@ -55,12 +58,16 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
         const data = await response.json();
         const getPngWine: FetchedDataShape[] = filterPngImages(data);
         const winesChunks = splitIntoChunks(getPngWine, 20);
-        console.log(winesChunks);
-
-        return setFetchData(winesChunks);
+        setFetchData(winesChunks);
+        setData([winesChunks[page]]);
       } catch (error) {
         console.log(error);
       }
+    },
+    displayDataPage() {
+      setData((prevState) => [...prevState, fetchData[page]]);
+      setPage((prevState) => prevState + 1);
+      console.log(data);
     },
     addProduct() {},
     removeProduct() {},

@@ -14,6 +14,7 @@ const Wines: FC = () => {
 
   useEffect(() => {
     WebCtx.fetchWinesByType(winesType);
+    WebCtx.displayDataPage();
   }, [winesType]);
 
   return (
