@@ -8,14 +8,14 @@ const List = styled.ul`
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 5rem;
   list-style-type: none;
 `;
 const Item = styled.li`
   position: relative;
-  width: 20%;
-  height: 30rem;
+  width: 30%;
+  height: 35rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +32,7 @@ const ItemImg = styled.img`
 `;
 const ItemDescriptionContainer = styled.div`
   width: 100%;
-  height: 20%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,21 +42,25 @@ const ItemDescriptionContainer = styled.div`
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontsSize.m};
 `;
-const ItemName = styled.p``;
+const ItemName = styled.p`
+  width: 80%;
+  line-height: 2rem;
+  text-align: center;
+`;
 const ItemPrice = styled.p`
   font-weight: 400;
 `;
 const AddBtn = styled.button`
   position: absolute;
   bottom: calc(20% + 2rem);
-  left: 3rem;
+  left: 8rem;
   background-color: transparent;
   border: none;
 `;
 const RemoveBtn = styled.button`
   position: absolute;
   bottom: calc(20% + 2rem);
-  right: 3rem;
+  right: 8rem;
   background-color: transparent;
   border: none;
 `;

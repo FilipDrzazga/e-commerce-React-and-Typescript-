@@ -1,4 +1,4 @@
-import { type FC, type ReactElement, useState, createContext } from "react";
+import { type FC, type ReactElement, useState, createContext, useContext } from "react";
 
 type FetchedDataShape = {
   winery: string;
@@ -21,7 +21,7 @@ type Product = {
 
 type WebContextValueType = {
   fetchedData: FetchedDataShape[] | null;
-  fetchWinesByType: (winesType: string) => Promise<unknown>;
+  fetchWinesByType: (winesType?: string) => Promise<unknown>;
   addProduct: (product: Product) => void;
   removeProduct: (productId: number) => void;
 };
@@ -31,6 +31,14 @@ type WebContextProviderPropsType = {
 };
 
 const WebCtx = createContext<WebContextValueType | null>(null);
+
+export const useWebContext = () => {
+  const WebContext = useContext(WebCtx);
+  if (WebContext === null) {
+    throw new Error("Context issue");
+  }
+  return WebContext;
+};
 
 const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
   const [fetchData, setFetchData] = useState<FetchedDataShape[] | null>(null);
@@ -44,8 +52,10 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
           throw new Error("Fetch wines data went wrong");
         }
         const data = await response.json();
-        console.log(data);
-        return setFetchData(data);
+        const getPngWine = data.filter((wine: FetchedDataShape) => wine.image.includes(".png"));
+        console.log(getPngWine);
+
+        return setFetchData(getPngWine);
       } catch (error) {
         console.log(error);
       }

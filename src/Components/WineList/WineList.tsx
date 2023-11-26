@@ -1,27 +1,31 @@
 import { type FC } from "react";
 import { AddBtnIcon, RemoveBtnIcon } from "../../assets/icons/index";
+import { useWebContext } from "../../Context/Context";
+
 import * as S from "./WineList.styled";
-import smallRedWine from "../../assets/images/small-red-wine.png";
 
 const WineList: FC = () => {
+  const WebCtx = useWebContext();
   return (
     <S.Section>
       <S.List>
-        <S.Item>
-          <S.ItemImgContainer>
-            <S.ItemImg src={smallRedWine} alt="small wine" />
-          </S.ItemImgContainer>
-          <S.RemoveBtn>
-            <RemoveBtnIcon />
-          </S.RemoveBtn>
-          <S.AddBtn>
-            <AddBtnIcon />
-          </S.AddBtn>
-          <S.ItemDescriptionContainer>
-            <S.ItemName>Angelicall Rosé 2014</S.ItemName>
-            <S.ItemPrice>£10.99</S.ItemPrice>
-          </S.ItemDescriptionContainer>
-        </S.Item>
+        {WebCtx.fetchedData?.map((wine) => (
+          <S.Item key={wine.id}>
+            <S.ItemImgContainer>
+              <S.ItemImg src={wine.image} alt="bootle of wine" />
+            </S.ItemImgContainer>
+            <S.RemoveBtn>
+              <RemoveBtnIcon />
+            </S.RemoveBtn>
+            <S.AddBtn>
+              <AddBtnIcon />
+            </S.AddBtn>
+            <S.ItemDescriptionContainer>
+              <S.ItemName>{wine.wine}</S.ItemName>
+              <S.ItemPrice>£10.99</S.ItemPrice>
+            </S.ItemDescriptionContainer>
+          </S.Item>
+        ))}
       </S.List>
     </S.Section>
   );

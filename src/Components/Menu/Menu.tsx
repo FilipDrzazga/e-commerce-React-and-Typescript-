@@ -3,7 +3,7 @@ import redWineImg from "../../assets/images/red-wine.jpg";
 
 import * as S from "./Menu.styled";
 
-const winesType: string[] = ["red", "whites", "rose", "dessert", "sparkling"];
+const winesType: string[] = ["reds", "whites", "rose", "dessert", "sparkling"];
 
 const Menu: FC = () => {
   return (

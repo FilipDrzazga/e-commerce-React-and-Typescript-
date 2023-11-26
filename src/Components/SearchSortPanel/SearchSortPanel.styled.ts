@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Section = styled.section`
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 5rem;
   width: 100%;
