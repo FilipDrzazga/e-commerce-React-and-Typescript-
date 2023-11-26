@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Section = styled.section`
   width: 100%;
@@ -25,6 +26,10 @@ const Item = styled.li`
   letter-spacing: 3rem;
   cursor: pointer;
 `;
+const ItemLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: none;
+`;
 const ImgContainer = styled.article`
   width: 50%;
   height: 95%;
@@ -38,4 +43,4 @@ const ImgContainer = styled.article`
   }
 `;
 
-export { Section, Nav, List, Item, ImgContainer };
+export { Section, Nav, List, Item, ItemLink, ImgContainer };

@@ -3,16 +3,18 @@ import redWineImg from "../../assets/images/red-wine.jpg";
 
 import * as S from "./Menu.styled";
 
+const winesType: string[] = ["red", "whites", "rose", "dessert", "sparkling"];
+
 const Menu: FC = () => {
   return (
     <S.Section>
       <S.Nav>
         <S.List>
-          <S.Item>red</S.Item>
-          <S.Item>whites</S.Item>
-          <S.Item>rose</S.Item>
-          <S.Item>dessert</S.Item>
-          <S.Item>sparkling</S.Item>
+          {winesType.map((wineType) => (
+            <S.Item key={wineType}>
+              <S.ItemLink to={`/wines/${wineType}`}>{wineType}</S.ItemLink>
+            </S.Item>
+          ))}
         </S.List>
       </S.Nav>
       <S.ImgContainer>

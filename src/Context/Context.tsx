@@ -44,6 +44,7 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
           throw new Error("Fetch wines data went wrong");
         }
         const data = await response.json();
+        console.log(data);
         return setFetchData(data);
       } catch (error) {
         console.log(error);
