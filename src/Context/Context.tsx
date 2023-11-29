@@ -55,9 +55,9 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
         if (!response.ok) {
           throw new Error("Fetch wines data went wrong");
         }
-        const data = await response.json();
-        const getPngWine: FetchedDataShape[] = filterPngImages(data);
-        const winesChunks = splitIntoChunks(getPngWine, 20);
+        const data: FetchedDataShape[] = await response.json();
+        const getPngWine = filterPngImages<FetchedDataShape>(data);
+        const winesChunks = splitIntoChunks<FetchedDataShape>(getPngWine, 20);
         setFetchData(winesChunks);
         setData([winesChunks[page]]);
       } catch (error) {
@@ -67,7 +67,6 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
     displayDataPage() {
       setData((prevState) => [...prevState, fetchData[page]]);
       setPage((prevState) => prevState + 1);
-      console.log(data);
     },
     addProduct() {},
     removeProduct() {},

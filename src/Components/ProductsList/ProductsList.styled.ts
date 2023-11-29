@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Section = styled.section`
   width: 100%;
@@ -20,6 +21,10 @@ const Item = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+const ItemLink = styled(Link)`
+  width: 100%;
+  height: 100%;
 `;
 const ItemImgContainer = styled.div`
   width: 100%;
@@ -69,6 +74,7 @@ export {
   Section,
   List,
   Item,
+  ItemLink,
   ItemImgContainer,
   ItemImg,
   ItemDescriptionContainer,

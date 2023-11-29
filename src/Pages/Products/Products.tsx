@@ -1,14 +1,14 @@
 import { type FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Navigation from "../../Components/Navigation/Navigation";
-import WineListDescription from "../../Components/WineListDescription/WineListDescription";
-import SearchSortPanel from "../../Components/SearchSortPanel/SearchSortPanel";
-import WineList from "../../Components/WineList/WineList";
 import { useWebContext } from "../../Context/Context";
+import Navigation from "../../Components/Navigation/Navigation";
+import ProductsDescriptio from "../../Components/ProductsDescription/ProductsDescription";
+import SearchSortPanel from "../../Components/SearchSortPanel/SearchSortPanel";
+import ProductsList from "../../Components/ProductsList/ProductsList";
 
-import * as S from "./Wines.styled";
+import * as S from "./Products.styled";
 
-const Wines: FC = () => {
+const Products: FC = () => {
   const WebCtx = useWebContext();
   const { winesType } = useParams<string>();
 
@@ -20,11 +20,11 @@ const Wines: FC = () => {
   return (
     <S.Container>
       <Navigation />
-      <WineListDescription />
+      <ProductsDescriptio />
       <SearchSortPanel />
-      <WineList />
+      <ProductsList />
     </S.Container>
   );
 };
 
-export default Wines;
+export default Products;

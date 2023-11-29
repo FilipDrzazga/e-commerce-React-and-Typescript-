@@ -1,7 +1,7 @@
 import { type FC } from "react";
-import * as S from "./WineListDescription.styled";
+import * as S from "./ProductsDescription.styled";
 
-const WineListDescription: FC = () => {
+const ProductsDescription: FC = () => {
   return (
     <S.Section>
       <S.Title>rose wine</S.Title>
@@ -16,4 +16,4 @@ const WineListDescription: FC = () => {
   );
 };
 
-export default WineListDescription;
+export default ProductsDescription;

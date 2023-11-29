@@ -1,12 +1,14 @@
 import { type FC } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { useLocation } from "react-router-dom";
 import { AddBtnIcon, RemoveBtnIcon } from "../../assets/icons/index";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { useWebContext } from "../../Context/Context";
 
-import * as S from "./WineList.styled";
+import * as S from "../ProductsList/ProductsList.styled";
 
-const WineList: FC = () => {
+const ProductsList: FC = () => {
   const WebCtx = useWebContext();
+  const location = useLocation();
 
   return (
     <S.Section>
@@ -21,7 +23,9 @@ const WineList: FC = () => {
             wines?.map((wine) => (
               <S.Item key={wine.id}>
                 <S.ItemImgContainer>
-                  <S.ItemImg src={wine.image} alt="bootle of wine" />
+                  <S.ItemLink to={`${location.pathname}/${wine.wine}`}>
+                    <S.ItemImg src={wine.image} alt="bootle of wine" />
+                  </S.ItemLink>
                 </S.ItemImgContainer>
                 <S.RemoveBtn>
                   <RemoveBtnIcon />
@@ -42,4 +46,4 @@ const WineList: FC = () => {
   );
 };
 
-export default WineList;
+export default ProductsList;

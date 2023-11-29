@@ -12,7 +12,7 @@ const Menu: FC = () => {
         <S.List>
           {winesType.map((wineType) => (
             <S.Item key={wineType}>
-              <S.ItemLink to={`/wines/${wineType}`}>{wineType}</S.ItemLink>
+              <S.ItemLink to={`wines/${wineType}`}>{wineType}</S.ItemLink>
             </S.Item>
           ))}
         </S.List>

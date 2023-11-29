@@ -1,7 +1,8 @@
 import React from "react";
 import WelcomeScreen from "./Pages/WelcomeScreen/WelcomeScreen";
 import HomeScreen from "./Pages/HomeScreen/HomeScreen";
-import Wines from "./Pages/Wines/Wines";
+import Products from "./Pages/Products/Products";
+import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import { Routes, Route } from "react-router-dom";
 
 const App: React.FC = () => {
@@ -10,7 +11,8 @@ const App: React.FC = () => {
       {/* <WelcomeScreen/> */}
       <Routes>
         <Route index path="/home" element={<HomeScreen />} />
-        <Route path="wines/:winesType" element={<Wines />} />
+        <Route path="home/wines/:winesType" element={<Products />} />
+        <Route path="home/wines/:winesType/:name" element={<ProductDetails />}></Route>
       </Routes>
     </>
   );
