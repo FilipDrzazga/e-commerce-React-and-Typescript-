@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
 import { splitCountryAndCityRegex } from "../../helpers";
+import * as S from "../Product/Product.styled";
 
 type LocationState = {
   state: {
@@ -19,34 +20,39 @@ type LocationState = {
 
 const Product: FC = () => {
   const { state } = useLocation() as LocationState;
-  console.log(state);
+
   return (
-    <section>
-      <section>
-        <div>
+    <>
+      <S.ProductSection>
+        <S.ProductImgContainer>
           <img src={state.image} alt="bootle of wine" />
-        </div>
-        <div>
-          <h1>{state.wine}</h1>
-          <p>Lorem ipsum dolor sit amet consectetur. Quis et convallis euismod eu morbi arcu maecenas. Non dictumst.</p>
-          <p>
-            £10.20 <span>750ml</span>
-          </p>
-          <div>
-            <div>
-              <button>-</button>
-              <span>0</span>
-              <button>+</button>
-            </div>
-            <button>ADD TO CART</button>
-          </div>
-        </div>
-      </section>
-      <section>
-        <hr></hr>
-        <h2>DETAILS</h2>
-        <hr></hr>
-        <ul>
+        </S.ProductImgContainer>
+        <S.ProductContainer>
+          <S.ProductName>{state.wine}</S.ProductName>
+          <S.ProductDescription>
+            Lorem ipsum dolor sit amet consectetur. Quis et convallis euismod eu morbi arcu maecenas. Non dictumst.Quis
+            et convallis euismod eu morbi arcu maecenas. Non dictumst.
+          </S.ProductDescription>
+          <S.ProductCost>
+            £10.20 <span>/ 750ml</span>
+          </S.ProductCost>
+          <S.BtnsContainer>
+            <S.BtnsFrame>
+              <S.BtnRemove>-</S.BtnRemove>
+              <S.Counter>0</S.Counter>
+              <S.BtnAdd>+</S.BtnAdd>
+            </S.BtnsFrame>
+            <S.AddToCardBtn>ADD TO CART</S.AddToCardBtn>
+          </S.BtnsContainer>
+        </S.ProductContainer>
+      </S.ProductSection>
+      <S.ProductDetailsSection>
+        <S.LinesContainer>
+          <S.Line></S.Line>
+          <h2>DETAILS</h2>
+          <S.Line></S.Line>
+        </S.LinesContainer>
+        <S.DetailsList>
           <li>
             <header>
               <h2>WINE TYPE</h2>
@@ -83,9 +89,9 @@ const Product: FC = () => {
             </header>
             <p>100% Sangiovese</p>
           </li>
-        </ul>
-      </section>
-    </section>
+        </S.DetailsList>
+      </S.ProductDetailsSection>
+    </>
   );
 };
 

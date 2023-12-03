@@ -8,6 +8,7 @@ declare module "styled-components" {
       s: string;
       m: string;
       l: string;
+      doubleL: string;
       xl: string;
       xxl: string;
       special: string;
@@ -28,6 +29,7 @@ const theme: DefaultTheme = {
     s: "0.5rem",
     m: "1rem",
     l: "1.5rem",
+    doubleL: "3rem",
     xl: "5rem",
     xxl: "8rem",
     special: "18rem",
