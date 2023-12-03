@@ -1,14 +1,14 @@
 import { FC } from "react";
-import { useParams } from "react-router-dom";
 import Navigation from "../../Components/Navigation/Navigation";
+import Product from "../../Components/Product/Product";
+import * as S from "./ProductDetails.styled";
 
 const ProductDetails: FC = () => {
-  const { name } = useParams<string>();
   return (
-    <>
+    <S.Container>
       <Navigation></Navigation>
-      <p>{name}</p>
-    </>
+      <Product></Product>
+    </S.Container>
   );
 };
 

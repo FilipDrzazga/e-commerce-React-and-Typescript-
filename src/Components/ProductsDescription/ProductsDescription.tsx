@@ -1,10 +1,14 @@
 import { type FC } from "react";
+import { useParams } from "react-router-dom";
 import * as S from "./ProductsDescription.styled";
 
 const ProductsDescription: FC = () => {
+  const { winesType } = useParams<string>();
+  console.log(winesType);
+
   return (
     <S.Section>
-      <S.Title>rose wine</S.Title>
+      <S.Title $afterTxtContent={winesType}>{winesType}</S.Title>
       <S.ParagraphContainer>
         <S.Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore

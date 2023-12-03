@@ -11,8 +11,8 @@ const App: React.FC = () => {
       {/* <WelcomeScreen/> */}
       <Routes>
         <Route index path="/home" element={<HomeScreen />} />
-        <Route path="home/wines/:winesType" element={<Products />} />
-        <Route path="home/wines/:winesType/:name" element={<ProductDetails />}></Route>
+        <Route path="home/:winesType" element={<Products />} />
+        <Route path="home/:winesType/:name" element={<ProductDetails />}></Route>
       </Routes>
     </>
   );

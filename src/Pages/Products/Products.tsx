@@ -13,9 +13,11 @@ const Products: FC = () => {
   const { winesType } = useParams<string>();
 
   useEffect(() => {
-    WebCtx.fetchWinesByType(winesType);
-    WebCtx.displayDataPage();
-  }, [winesType]);
+    if (WebCtx.data.length === 0) {
+      WebCtx.fetchWinesByType(winesType);
+      WebCtx.displayDataPage();
+    }
+  }, []);
 
   return (
     <S.Container>

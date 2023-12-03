@@ -1,14 +1,19 @@
 import { type FC } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { AddBtnIcon, RemoveBtnIcon } from "../../assets/icons/index";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useWebContext } from "../../Context/Context";
 
 import * as S from "../ProductsList/ProductsList.styled";
 
+type LocationState = {
+  pathname: string;
+};
+
 const ProductsList: FC = () => {
   const WebCtx = useWebContext();
-  const location = useLocation();
+  const { pathname } = useLocation() as LocationState;
+  const { winesType } = useParams<string>();
 
   return (
     <S.Section>
@@ -23,7 +28,7 @@ const ProductsList: FC = () => {
             wines?.map((wine) => (
               <S.Item key={wine.id}>
                 <S.ItemImgContainer>
-                  <S.ItemLink to={`${location.pathname}/${wine.wine}`}>
+                  <S.ItemLink to={`${pathname}/${wine.wine}`} state={{ ...wine, wineType: winesType }}>
                     <S.ItemImg src={wine.image} alt="bootle of wine" />
                   </S.ItemLink>
                 </S.ItemImgContainer>
