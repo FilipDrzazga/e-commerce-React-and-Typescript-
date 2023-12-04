@@ -116,13 +116,14 @@ const DetailsList = styled.ul`
   gap: 2rem;
   list-style-type: none;
   li {
-    width: 30%;
+    width: 15%;
+    margin: 0 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     h2 {
       font-size: ${({ theme }) => theme.fontsSize.m};
       font-weight: 400;

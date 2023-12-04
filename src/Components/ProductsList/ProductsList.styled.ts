@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { randomBackgroundColor } from "../../helpers";
 
 const Section = styled.section`
   width: 100%;
@@ -9,18 +10,22 @@ const List = styled.ul`
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
   list-style-type: none;
 `;
 const Item = styled.li`
   position: relative;
-  width: 30%;
+  width: 25%;
   height: 35rem;
+  // margin: 0 2rem;
+  padding: ${({ theme }) => theme.padding[1]};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => randomBackgroundColor(theme.listItemColors)};
 `;
 const ItemLink = styled(Link)`
   width: 100%;
@@ -58,14 +63,14 @@ const ItemPrice = styled.p`
 const AddBtn = styled.button`
   position: absolute;
   bottom: calc(20% + 2rem);
-  left: 8rem;
+  left: 5rem;
   background-color: transparent;
   border: none;
 `;
 const RemoveBtn = styled.button`
   position: absolute;
   bottom: calc(20% + 2rem);
-  right: 8rem;
+  right: 5rem;
   background-color: transparent;
   border: none;
 `;

@@ -20,6 +20,7 @@ declare module "styled-components" {
       purple: string;
       lightBlue: string;
     };
+    listItemColors: string[];
   }
 }
 
@@ -41,6 +42,7 @@ const theme: DefaultTheme = {
     purple: "#D197FF",
     lightBlue: "#E3F9FF",
   },
+  listItemColors: ["#EEF5FF", "#D2DAFF", "#F1EAFF"],
 };
 
 export default theme;
