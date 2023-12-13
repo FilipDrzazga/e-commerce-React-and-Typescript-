@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type FC, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { AddBtnIcon, RemoveBtnIcon } from "../../assets/icons/index";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -14,6 +14,11 @@ const ProductsList: FC = () => {
   const WebCtx = useWebContext();
   const { pathname } = useLocation() as LocationState;
   const { winesType } = useParams<string>();
+
+  useEffect(() => {
+    WebCtx.fetchWinesByType(winesType);
+    // WebCtx.displayDataPage();
+  }, [winesType]);
 
   return (
     <S.Section>

@@ -44,6 +44,7 @@ const ProductCost = styled.p`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.black};
   span {
+    margin-left: 0.5rem;
     font-size: ${({ theme }) => theme.fontsSize.m};
     font-weight: 400;
     color: ${({ theme }) => theme.colors.gray};

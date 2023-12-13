@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
-import { getRandomPrice, splitCountryAndCityRegex } from "../../helpers";
+import { splitCountryAndCityRegex } from "../../helpers";
 import * as S from "../Product/Product.styled";
 
 type LocationState = {
@@ -34,7 +34,7 @@ const Product: FC = () => {
             et convallis euismod eu morbi arcu maecenas. Non dictumst.
           </S.ProductDescription>
           <S.ProductCost>
-            {getRandomPrice()}
+            £10.99
             <span>/ 750ml</span>
           </S.ProductCost>
           <S.BtnsContainer>
