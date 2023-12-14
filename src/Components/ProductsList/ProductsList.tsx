@@ -12,13 +12,16 @@ type LocationState = {
 
 const ProductsList: FC = () => {
   const WebCtx = useWebContext();
-  const { pathname } = useLocation() as LocationState;
   const { winesType } = useParams<string>();
+  const { pathname } = useLocation() as LocationState;
 
   useEffect(() => {
-    WebCtx.fetchWinesByType(winesType);
-    // WebCtx.displayDataPage();
-  }, [winesType]);
+    if (WebCtx.productType !== winesType) {
+      WebCtx.resetData();
+      WebCtx.fetchWinesByType(winesType);
+      WebCtx.setProductType(winesType);
+    }
+  }, []);
 
   return (
     <S.Section>

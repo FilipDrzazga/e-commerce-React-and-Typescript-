@@ -4,7 +4,6 @@ import * as S from "./ProductsDescription.styled";
 
 const ProductsDescription: FC = () => {
   const { winesType } = useParams<string>();
-  console.log(winesType);
 
   return (
     <S.Section>
