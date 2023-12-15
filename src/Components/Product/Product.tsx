@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { splitCountryAndCityRegex } from "../../helpers";
 import * as S from "../Product/Product.styled";
@@ -16,10 +16,15 @@ type LocationState = {
     image: string;
     id: number;
   };
+  pathname: string;
 };
 
 const Product: FC = () => {
-  const { state } = useLocation() as LocationState;
+  const { state, pathname } = useLocation() as LocationState;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
