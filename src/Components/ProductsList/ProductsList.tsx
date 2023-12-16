@@ -16,11 +16,7 @@ const ProductsList: FC = () => {
   const { pathname } = useLocation() as LocationState;
 
   useEffect(() => {
-    if (WebCtx.productType !== winesType) {
-      WebCtx.resetData();
-      WebCtx.fetchWinesByType(winesType);
-      WebCtx.setProductType(winesType);
-    }
+    WebCtx.fetchWinesByType(winesType);
   }, []);
 
   return (
