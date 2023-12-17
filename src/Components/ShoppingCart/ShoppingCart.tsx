@@ -1,12 +1,15 @@
 import { FC } from "react";
+import { useWebContext } from "../../Context/Context";
+import * as S from "../ShoppingCart/ShoppingCart.styled";
 
 const ShoppingCart: FC = () => {
   const itemsColumn = ["Items", "Size", "Quantity", "Price"];
   const summaryTitle = ["Subtotal", "Shipping", "Tax"];
+  const WebCtx = useWebContext();
   return (
-    <section>
+    <S.ShoppingCard>
       <section>
-        <button>BACK TO STORE</button>
+        <button onClick={() => WebCtx.displayShoppingCart(false)}>BACK TO STORE</button>
         <header>
           <h1>Shopping cart</h1>
           <span>3 ITEMS</span>
@@ -52,8 +55,11 @@ const ShoppingCart: FC = () => {
             <li>{title}</li>
           ))}
         </ul>
+        <div>
+          <span>Total</span>
+        </div>
       </section>
-    </section>
+    </S.ShoppingCard>
   );
 };
 

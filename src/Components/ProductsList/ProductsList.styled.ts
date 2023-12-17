@@ -4,6 +4,7 @@ import { randomBackgroundColor } from "../../helpers";
 
 const Section = styled.section`
   width: 100%;
+  min-height: 100vh;
 `;
 const List = styled.ul`
   width: 100%;

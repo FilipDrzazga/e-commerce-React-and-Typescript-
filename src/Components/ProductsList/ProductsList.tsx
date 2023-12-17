@@ -19,6 +19,11 @@ const ProductsList: FC = () => {
     WebCtx.fetchWinesByType(winesType);
   }, []);
 
+  useEffect(() => {
+    const body = document.querySelector("body") as HTMLBodyElement;
+    body.style.overflow = WebCtx.isShoppingCartVisible ? "hidden" : "auto";
+  }, [WebCtx.isShoppingCartVisible]);
+
   return (
     <S.Section>
       <InfiniteScroll
