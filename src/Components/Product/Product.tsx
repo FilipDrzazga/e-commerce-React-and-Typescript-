@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { splitCountryAndCityRegex } from "../../helpers";
 import * as S from "../Product/Product.styled";
@@ -19,8 +19,19 @@ type LocationState = {
   pathname: string;
 };
 
+type Value = "add" | "remove";
+
 const Product: FC = () => {
+  const [productQuantity, setProductQuatity] = useState<number>(0);
   const { state, pathname } = useLocation() as LocationState;
+
+  const handleQuantityProduct = (value: Value): void => {
+    if (value === "add") {
+      setProductQuatity((prevState) => prevState + 1);
+    } else if (value === "remove") {
+      productQuantity === 0 ? setProductQuatity(0) : setProductQuatity((prevState) => prevState - 1);
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,9 +55,9 @@ const Product: FC = () => {
           </S.ProductCost>
           <S.BtnsContainer>
             <S.BtnsFrame>
-              <S.BtnRemove>-</S.BtnRemove>
-              <S.Counter>0</S.Counter>
-              <S.BtnAdd>+</S.BtnAdd>
+              <S.BtnRemove onClick={() => handleQuantityProduct("remove")}>-</S.BtnRemove>
+              <S.Counter>{productQuantity}</S.Counter>
+              <S.BtnAdd onClick={() => handleQuantityProduct("add")}>+</S.BtnAdd>
             </S.BtnsFrame>
             <S.AddToCardBtn>ADD TO CART</S.AddToCardBtn>
           </S.BtnsContainer>
