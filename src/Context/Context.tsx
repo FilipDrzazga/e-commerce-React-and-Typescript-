@@ -1,7 +1,7 @@
 import { type FC, type ReactElement, useState, createContext, useContext } from "react";
 import { splitIntoChunks, filterPngImages } from "../helpers";
 
-type FetchedDataShape = {
+interface FetchedDataShape {
   winery: string;
   wine: string;
   rating: {
@@ -11,14 +11,13 @@ type FetchedDataShape = {
   locations: string;
   image: string;
   id: number;
-};
+}
 
-type Product = {
-  name: string;
-  price: number;
+interface Product extends FetchedDataShape {
   quantity: number;
-  id: number;
-};
+  capacity: string;
+  price: number;
+}
 
 type WebContextValueType = {
   data: Array<FetchedDataShape[]>;
@@ -26,8 +25,7 @@ type WebContextValueType = {
   fetchWinesByType: (winesType?: string) => Promise<unknown>;
   displayDataPage: () => void;
   displayShoppingCart: (isVisible: boolean) => void;
-  addProduct: (product: Product) => void;
-  removeProduct: (productId: number) => void;
+  addToShoppingCart: (product: Partial<Product>) => void;
 };
 
 type WebContextProviderPropsType = {
@@ -50,6 +48,7 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
   const [page, setPage] = useState(0);
   const [type, setType] = useState<string | undefined>("");
   const [isShoppingCartVisible, setIsShoppingCartVisible] = useState<boolean>(false);
+  const [shoppingCartItem, setShoppingCartItem] = useState<Partial<Product>[]>([]);
 
   const ctx: WebContextValueType = {
     data: data,
@@ -80,8 +79,10 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
     displayShoppingCart(isVisible) {
       setIsShoppingCartVisible(isVisible);
     },
-    addProduct() {},
-    removeProduct() {},
+    addToShoppingCart(product) {
+      setShoppingCartItem((prevState) => [...prevState, product]);
+      console.log(shoppingCartItem);
+    },
   };
 
   return <WebCtx.Provider value={ctx}>{children}</WebCtx.Provider>;

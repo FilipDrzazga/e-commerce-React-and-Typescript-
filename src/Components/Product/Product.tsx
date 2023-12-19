@@ -1,11 +1,12 @@
 import { FC, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useWebContext } from "../../Context/Context";
 import { splitCountryAndCityRegex } from "../../helpers";
 import * as S from "../Product/Product.styled";
 
 type LocationState = {
   state: {
-    winery: number;
+    winery: string;
     wine: string;
     wineType: string;
     rating: {
@@ -19,18 +20,36 @@ type LocationState = {
   pathname: string;
 };
 
-type Value = "add" | "remove";
+type QuantityValue = "add" | "remove";
 
 const Product: FC = () => {
-  const [productQuantity, setProductQuatity] = useState<number>(0);
+  const WebCtx = useWebContext();
+  const [productQuantity, setProductQuatity] = useState<number>(1);
   const { state, pathname } = useLocation() as LocationState;
 
-  const handleQuantityProduct = (value: Value): void => {
+  const handleQuantityProduct = (value: QuantityValue): void => {
     if (value === "add") {
       setProductQuatity((prevState) => prevState + 1);
     } else if (value === "remove") {
-      productQuantity === 0 ? setProductQuatity(0) : setProductQuatity((prevState) => prevState - 1);
+      productQuantity === 1 ? setProductQuatity(1) : setProductQuatity((prevState) => prevState - 1);
     }
+  };
+
+  const handleAddProductToCart = (): void => {
+    const productDetails: Partial<LocationState["state"]> = {
+      image: state.image,
+      wine: state.wine,
+      wineType: state.wineType,
+      id: state.id,
+    };
+    const productCost: { quantity: number; capacity: string; price: number } = {
+      quantity: productQuantity,
+      capacity: "750ml",
+      price: 10.99,
+    };
+    const product = Object.assign(productDetails, productCost);
+    WebCtx.addToShoppingCart(product);
+    setProductQuatity(1);
   };
 
   useEffect(() => {
@@ -59,7 +78,7 @@ const Product: FC = () => {
               <S.Counter>{productQuantity}</S.Counter>
               <S.BtnAdd onClick={() => handleQuantityProduct("add")}>+</S.BtnAdd>
             </S.BtnsFrame>
-            <S.AddToCardBtn>ADD TO CART</S.AddToCardBtn>
+            <S.AddToCardBtn onClick={() => handleAddProductToCart()}>ADD TO CART</S.AddToCardBtn>
           </S.BtnsContainer>
         </S.ProductContainer>
       </S.ProductSection>
