@@ -1,4 +1,9 @@
 import styled from "styled-components";
+
+type Props = {
+  $isLessPossible?: number;
+};
+
 const ProductSection = styled.section`
   width: 100%;
   height: 80vh;
@@ -73,7 +78,9 @@ const BtnAdd = styled.button`
   font-size: ${({ theme }) => theme.fontsSize.l};
   color: ${({ theme }) => theme.colors.black};
 `;
-const BtnRemove = styled(BtnAdd)``;
+const BtnRemove = styled(BtnAdd)<Props>`
+  color: ${({ $isLessPossible, theme }) => $isLessPossible === 1 && theme.colors.gray};
+`;
 const Counter = styled.span`
   font-size: ${({ theme }) => theme.fontsSize.l};
   color: ${({ theme }) => theme.colors.black};

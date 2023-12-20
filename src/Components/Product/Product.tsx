@@ -74,7 +74,9 @@ const Product: FC = () => {
           </S.ProductCost>
           <S.BtnsContainer>
             <S.BtnsFrame>
-              <S.BtnRemove onClick={() => handleQuantityProduct("remove")}>-</S.BtnRemove>
+              <S.BtnRemove $isLessPossible={productQuantity} onClick={() => handleQuantityProduct("remove")}>
+                -
+              </S.BtnRemove>
               <S.Counter>{productQuantity}</S.Counter>
               <S.BtnAdd onClick={() => handleQuantityProduct("add")}>+</S.BtnAdd>
             </S.BtnsFrame>

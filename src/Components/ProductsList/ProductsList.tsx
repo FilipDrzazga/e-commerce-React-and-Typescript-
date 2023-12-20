@@ -41,12 +41,6 @@ const ProductsList: FC = () => {
                     <S.ItemImg src={wine.image} alt="bootle of wine" />
                   </S.ItemLink>
                 </S.ItemImgContainer>
-                <S.RemoveBtn>
-                  <RemoveBtnIcon />
-                </S.RemoveBtn>
-                <S.AddBtn>
-                  <AddBtnIcon />
-                </S.AddBtn>
                 <S.ItemDescriptionContainer>
                   <S.ItemName>{wine.wine}</S.ItemName>
                   <S.ItemPrice>£10.99</S.ItemPrice>
