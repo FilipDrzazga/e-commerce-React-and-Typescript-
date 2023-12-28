@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { randomBackgroundColor } from "../../helpers";
 
-const Section = styled.section`
+type Props = {
+  $isScroll?: boolean;
+};
+
+const Section = styled.section<Props>`
   width: 100%;
   min-height: 100vh;
 `;

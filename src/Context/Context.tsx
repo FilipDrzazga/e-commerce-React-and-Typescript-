@@ -17,11 +17,13 @@ interface Product extends FetchedDataShape {
   quantity: number;
   capacity: string;
   price: number;
+  wineType: string;
 }
 
 type WebContextValueType = {
   data: Array<FetchedDataShape[]>;
   isShoppingCartVisible: boolean;
+  shoppingCartItem: Partial<Product>[];
   fetchWinesByType: (winesType?: string) => Promise<unknown>;
   displayDataPage: () => void;
   displayShoppingCart: (isVisible: boolean) => void;
@@ -51,8 +53,9 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
   const [shoppingCartItem, setShoppingCartItem] = useState<Partial<Product>[]>([]);
 
   const ctx: WebContextValueType = {
-    data: data,
-    isShoppingCartVisible: isShoppingCartVisible,
+    data,
+    isShoppingCartVisible,
+    shoppingCartItem,
     async fetchWinesByType(winesType) {
       if (winesType !== type) {
         setData([]);
@@ -81,7 +84,6 @@ const WebContextProvider: FC<WebContextProviderPropsType> = ({ children }) => {
     },
     addToShoppingCart(product) {
       setShoppingCartItem((prevState) => [...prevState, product]);
-      console.log(shoppingCartItem);
     },
   };
 

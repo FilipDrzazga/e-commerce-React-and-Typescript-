@@ -1,6 +1,5 @@
 import { type FC, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { AddBtnIcon, RemoveBtnIcon } from "../../assets/icons/index";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useWebContext } from "../../Context/Context";
 
@@ -18,11 +17,6 @@ const ProductsList: FC = () => {
   useEffect(() => {
     WebCtx.fetchWinesByType(winesType);
   }, []);
-
-  useEffect(() => {
-    const body = document.querySelector("body") as HTMLBodyElement;
-    body.style.overflow = WebCtx.isShoppingCartVisible ? "hidden" : "auto";
-  }, [WebCtx.isShoppingCartVisible]);
 
   return (
     <S.Section>
