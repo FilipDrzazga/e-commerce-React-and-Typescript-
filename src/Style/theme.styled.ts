@@ -38,7 +38,7 @@ const theme: DefaultTheme = {
   colors: {
     black: "#292929",
     lightBlack: "#29292909",
-    gray: "#AEB7C8",
+    gray: "#aeb7c8",
     purple: "#D197FF",
     lightBlue: "#E3F9FF",
   },

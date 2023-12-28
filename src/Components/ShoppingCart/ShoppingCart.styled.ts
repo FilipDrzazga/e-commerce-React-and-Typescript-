@@ -7,11 +7,11 @@ const ShoppingCard = styled.section`
   width: 100vw;
   min-height: 100vh;
   display: flex;
-  background-color: rgba(41, 41, 41, 0.8);
+  background-color: rgba(225, 226, 230, 0.8);
   z-index: 999;
 `;
 const Cart = styled.section`
-  width: 50%;
+  width: 60%;
   height: 100vh;
   margin-left: 20%;
   display: flex;
@@ -51,6 +51,8 @@ const CartHeader = styled.header`
 `;
 const CartListHeader = styled.ul`
   display: flex;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.gray};
   list-style: none;
   li {
     width: 12.5%;
@@ -62,6 +64,8 @@ const CartListHeader = styled.ul`
   }
 `;
 const CartList = styled.ul`
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -129,17 +133,68 @@ const ItemBtns = styled(ItemCapacity)`
 const ItemPrice = styled(ItemCapacity)``;
 const ItemRemove = styled(ItemCapacity)`
   button {
+    margin-left: auto;
     background-color: transparent;
     border: none;
   }
 `;
 const CartSummary = styled.section`
-  width: 30%;
+  width: 20%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.gray};
+  gap: 2rem;
+  background-color: #e7e8eb;
+  color: ${({ theme }) => theme.colors.black};
   padding: ${({ theme }) => theme.padding[1]};
+`;
+const CartSummaryCloseBtn = styled.button`
+  width: 20%;
+  height: 2rem;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  text-align: right;
+  color: ${({ theme }) => theme.colors.gray};
+`;
+const CartSummaryHeader = styled.header`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  h2 {
+    font-size: ${({ theme }) => theme.fontsSize.l};
+  }
+`;
+const CartSummaryList = styled.ul`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: ${({ theme }) => theme.fontsSize.m};
+  list-style: none;
+`;
+const CartSummaryTotal = styled.div`
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: ${({ theme }) => theme.fontsSize.l};
+  font-weight: 600;
+  & span:first-child {
+    font-weight: 300;
+  }
+`;
+const CartSummaryCheckout = styled.button`
+  width: 100%;
+  height: 5rem;
+  margin-top: 3rem;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.black};
+  color: white;
+  letter-spacing: 0.3rem;
 `;
 
 export {
@@ -157,4 +212,9 @@ export {
   ItemPrice,
   ItemRemove,
   CartSummary,
+  CartSummaryCloseBtn,
+  CartSummaryHeader,
+  CartSummaryList,
+  CartSummaryTotal,
+  CartSummaryCheckout,
 };

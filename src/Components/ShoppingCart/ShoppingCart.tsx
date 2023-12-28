@@ -5,7 +5,7 @@ import * as S from "../ShoppingCart/ShoppingCart.styled";
 
 const ShoppingCart: FC = () => {
   const itemsColumn = ["Items", "Size", "Quantity", "Price"];
-  const summaryTitle = ["Subtotal", "Shipping", "Tax"];
+  const summaryTitle = ["Subtotal:", "Shipping:", "Tax:"];
   const WebCtx = useWebContext();
   console.log(WebCtx.shoppingCartItem);
   return (
@@ -25,7 +25,7 @@ const ShoppingCart: FC = () => {
           ))}
         </S.CartListHeader>
         <S.CartList>
-          {WebCtx.shoppingCartItem.map((item, id) => (
+          {WebCtx.shoppingCartItem.map((item) => (
             <S.Item key={item.wine}>
               <S.ItemImg>
                 <img src={item.image} alt="bootle of wine" />
@@ -59,18 +59,22 @@ const ShoppingCart: FC = () => {
         </S.CartList>
       </S.Cart>
       <S.CartSummary>
-        <button onClick={() => WebCtx.displayShoppingCart(false)}>Close</button>
-        <header>
+        <S.CartSummaryCloseBtn onClick={() => WebCtx.displayShoppingCart(false)}>
+          <RemoveBtnIcon></RemoveBtnIcon>
+        </S.CartSummaryCloseBtn>
+        <S.CartSummaryHeader>
           <h2>Summary</h2>
-        </header>
-        <ul>
+        </S.CartSummaryHeader>
+        <S.CartSummaryList>
           {summaryTitle.map((title) => (
             <li>{title}</li>
           ))}
-        </ul>
-        <div>
-          <span>Total</span>
-        </div>
+        </S.CartSummaryList>
+        <S.CartSummaryTotal>
+          <span>Total:</span>
+          <span>£345.99</span>
+        </S.CartSummaryTotal>
+        <S.CartSummaryCheckout>CHECKOUT</S.CartSummaryCheckout>
       </S.CartSummary>
     </S.ShoppingCard>
   );
